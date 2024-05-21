@@ -1,27 +1,60 @@
 import 'package:flutter/material.dart';
+import 'package:samplef/components/ttable.dart';
+import 'package:samplef/pages/profilepage.dart';
 
-
-class Mainpage extends StatelessWidget {
+class Mainpage extends StatefulWidget {
   const Mainpage({super.key});
+
+  @override
+  State<Mainpage> createState() => _MainpageState();
+}
+
+class _MainpageState extends State<Mainpage> {
+   int _selectedIndex=0;
+
+   void _navigateBottomBar(int index){
+    setState(() {
+      _selectedIndex = index;
+      
+    });
+   }
+
+  final List _pages =[
+
+const TTable(),
+
+const Profilepage(),
+
+
+  ];
 
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      backgroundColor:const Color.fromARGB(227, 186, 126, 228),
-      appBar: AppBar(
-        backgroundColor:const Color.fromARGB(227, 186, 126, 228),
+      body:_pages[_selectedIndex] ,
+      backgroundColor:const Color.fromARGB(225, 1, 0, 2),
+    bottomNavigationBar: BottomNavigationBar(
+      currentIndex: _selectedIndex,
+      onTap: _navigateBottomBar ,     
+      items:const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.android),
+          label: 'Chatbot',
+          ),   
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          label: 'Profile',
+          ),
+                  
+      ],),
+         appBar: AppBar(
+        backgroundColor:const Color.fromARGB(225, 193, 143, 228),
         elevation: 0,
         centerTitle: true,
-        title:const Text("Main Page",
-        style: TextStyle(
-          fontStyle: FontStyle.italic,
-          fontWeight: FontWeight.bold,
-          color: Color.fromARGB(255, 0, 0, 0)
-        ),
-      ),
     ),
+    
     drawer: Drawer(
-      backgroundColor: Color.fromARGB(255, 225, 223, 226),
+      backgroundColor:const Color.fromARGB(255, 224, 228, 229),
       child: Column(
         children: [
           const DrawerHeader(
@@ -31,29 +64,42 @@ class Mainpage extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(18.0),
+            padding: const EdgeInsets.symmetric(vertical: 0,horizontal: 0),
             child: ListTile(
               leading:const Icon(
                 Icons.home,
-                size: 48,      
+                size: 32,      
               ),
-              title:const Text("H O M E"),
+              title:const Text("H O M E",
+              style: TextStyle(
+                fontFamily: "PS",
+                fontSize: 15,
+                fontWeight:FontWeight.bold,
+              ),),
               onTap: () {
-            
-            
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/mainpage');           
               },
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: const ListTile(
-              leading: Icon(
+            padding:const   EdgeInsets.symmetric(vertical: 0,horizontal: 0),
+            child:  ListTile(
+              leading: const Icon(
                 Icons.settings,
-                size: 48,      
+                size: 32,      
               ),
-              title: Text(
-                "SETTINGS",
+              title:const Text(
+                "TEACHER TIMETABLE",
+                style: TextStyle(
+                  fontFamily: "PS",
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
+              onTap: (){
+                Navigator.pushNamed(context,'/table');
+              },
             ),
           )
           

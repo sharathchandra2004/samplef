@@ -7,7 +7,14 @@ class Homepage extends StatelessWidget {
   Widget build(BuildContext context) {
     return   MaterialApp(
       home: Scaffold(
-      backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.deepPurple,
+      body: Container(
+        decoration:const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("images/a person with a backpack looking at a cell phone.jpg"),
+            fit: BoxFit.cover,
+            ),
+        ),
     //   appBar: AppBar(
     //     backgroundColor: const Color.fromARGB(255, 20, 2, 52),
     //     elevation: 0,
@@ -20,22 +27,35 @@ class Homepage extends StatelessWidget {
     //     ),
     //   ),
     // ),
-     body: Padding(
+    
+     child: Padding(
           padding: const EdgeInsets.fromLTRB(15, 150, 15, 0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center, // Center content vertically
             children: [
              
               // Add the main text
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 250),
+               Padding(
+                padding:const EdgeInsets.symmetric(vertical: 270),
                 child: Center(
-                  child: Text(
-                    "TIME TABLE GENERATOR",
-                    style: TextStyle(
-                      fontFamily: 'Schyler',
-                      color: Colors.white,
-                      fontSize: 25.0,
+                  child: Container(
+                    height: 38,
+                    width: 350,
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(195, 104, 58, 183),
+                      borderRadius: BorderRadius.circular(10),
+
+                    ),
+                    
+                    child:const Center(
+                      child: Text(
+                        "SCHEDULE SYMPHONY",
+                        style: TextStyle(
+                          fontFamily: 'Schyler', 
+                          color: Color.fromARGB(255, 255, 225, 0),
+                          fontSize: 30.0,
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -80,6 +100,7 @@ class Homepage extends StatelessWidget {
           ),
         ),
       ),
+    ),
     );
   }
 }
