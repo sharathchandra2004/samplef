@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:samplef/components/ttable.dart';
 import 'package:samplef/pages/profilepage.dart';
 
 class Mainpage extends StatefulWidget {
@@ -21,7 +20,7 @@ class _MainpageState extends State<Mainpage> {
 
   final List _pages =[
 
-const TTable(),
+
 
 const Profilepage(),
 
