@@ -18,4 +18,8 @@ class MongoDatabase {
         print("error connecting to database:$e");
       }
     }
+    static Future<List<Map<String, dynamic >>>getData() async{
+      final arrData = await userCollection.find().tolist();
+      return arrData;
+    }
  }

@@ -9,7 +9,7 @@ class MyButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child:  Container(
+      child:  SizedBox(
         width: 300,
         height: 60,
         child: ElevatedButton(

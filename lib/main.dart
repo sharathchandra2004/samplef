@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:samplef/components/ttable.dart';
+import 'package:samplef/pages/display.dart';
 import 'package:samplef/pages/homepage.dart';
 import 'package:samplef/pages/loginpage.dart';
 import 'package:samplef/pages/mainpage.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget{
         '/mainpage' : (context) => const  Mainpage(), 
         '/table':(context) => const TTable(),
         '/login1': (context) => const Loginpage(),
+        '/display': (context) =>  Mongodb(),
         }
     );
   }

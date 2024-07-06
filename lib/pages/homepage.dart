@@ -90,7 +90,7 @@ class Homepage extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context,'/login1');
+                      Navigator.pushNamed(context,'/display');
                     },
                   ),
                 ),
