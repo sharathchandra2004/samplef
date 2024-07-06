@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:samplef/components/ttable.dart';
-import 'package:samplef/pages/home1.dart';
 import 'package:samplef/pages/homepage.dart';
-import 'package:samplef/pages/loginpage.dart';
 import 'package:samplef/pages/mainpage.dart';
 void main(){
   // ignore: prefer_const_constructors
@@ -19,9 +17,7 @@ class MyApp extends StatelessWidget{
       debugShowCheckedModeBanner: false,
       home: const Homepage(),
       routes:{
-        '/loginpage': (context) =>  Loginpage() ,
-        '/mainpage' : (context) => const  Mainpage(),
-        '/home1': (context) => Home1(),  
+        '/mainpage' : (context) => const  Mainpage(), 
         '/table':(context) => const TTable(),
         }
     );
