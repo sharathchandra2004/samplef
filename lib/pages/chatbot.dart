@@ -6,6 +6,7 @@ class Chatbot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const   Scaffold(
+      backgroundColor: Colors.amber,
        
        body:Center(
         child: Text("This is chatbot page"),),
