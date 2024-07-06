@@ -19,12 +19,9 @@ class _MainpageState extends State<Mainpage> {
    }
 
   final List _pages =[
+    const Mainpage(),
 
-
-
-const Profilepage(),
-
-
+    const Profilepage(),
   ];
 
   @override

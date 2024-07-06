@@ -16,27 +16,21 @@ class Loginpage extends StatelessWidget{
 
 
     return   Scaffold(
-      appBar: AppBar(
-        backgroundColor:const Color.fromARGB(255, 2, 63, 91),
+      // appBar: AppBar(
+      //   backgroundColor:const Color.fromARGB(255, 2, 63, 91),
         
-        elevation: 0,
-        title: const Text("A sustaiable and valuable healthcare",
-        style: TextStyle(
-          color: Colors.white70,
-          fontSize: 15,
-        ),),
-        centerTitle: true,         
-      ),
-      backgroundColor:const Color.fromARGB(255, 4, 75, 126),
+      //   elevation: 0,
+      //   title: const Text("A sustaiable and valuable healthcare",
+      //   style: TextStyle(
+      //     color: Colors.white70,
+      //     fontSize: 15,
+      //   ),),
+      //   centerTitle: true,         
+      // ),
+      backgroundColor:Color.fromARGB(255, 198, 223, 240),
         body:Container(
           width: 500,
           height: 950,
-          decoration:const BoxDecoration(
-            image:DecorationImage(image: AssetImage('images/TC.png'),
-            fit: BoxFit.cover,
-            alignment: Alignment.center,
-            )
-          ),
           child:Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -96,6 +90,7 @@ class Loginpage extends StatelessWidget{
                   if(kDebugMode){
                     print('button clicked');
                   }
+                  Navigator.pushNamed(context, '/mainpage');
               },
               style:TextButton.styleFrom(
                 
@@ -103,7 +98,7 @@ class Loginpage extends StatelessWidget{
                 backgroundColor:const Color.fromARGB(197, 19, 98, 151),
                 foregroundColor:const Color.fromARGB(255, 255, 255, 255),
                 fixedSize: const Size(375,55),
-                shape:ContinuousRectangleBorder(borderRadius: BorderRadius.circular(5)),              
+                shape:ContinuousRectangleBorder(borderRadius: BorderRadius.circular(25)),              
               ),
               child:const Text("Log in",
               style: TextStyle(
