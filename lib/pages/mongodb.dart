@@ -1,7 +1,6 @@
 import 'dart:developer';
 // ignore: depend_on_referenced_packages
 import 'package:mongo_dart/mongo_dart.dart';
-
 import 'package:samplef/pages/constant.dart';
 
 class MongoDatabase {
