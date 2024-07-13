@@ -1,120 +1,183 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:samplef/pages/userlogin.dart';
+import 'dart:convert';
 
-class Loginpage extends StatelessWidget{
-   const Loginpage({super.key});
+class Loginpage extends StatefulWidget {
+  const Loginpage({super.key});
+
+  @override
+  State<Loginpage> createState() => _LoginpageState();
+}
+
+class _LoginpageState extends State<Loginpage> {
+  String url = '';
+  var data;
+  String output='Initial Output';
+
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final border = OutlineInputBorder(
-      borderSide: const BorderSide(
-        width: 1.0,
-        color: Color.fromARGB(197, 9, 134, 192)
-        ),
-        borderRadius: BorderRadius.circular(5)
-    );
-
-
-    return   Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor:const Color.fromARGB(255, 2, 63, 91),
-        
-      //   elevation: 0,
-      //   title: const Text("A sustaiable and valuable healthcare",
-      //   style: TextStyle(
-      //     color: Colors.white70,
-      //     fontSize: 15,
-      //   ),),
-      //   centerTitle: true,         
+    return  Scaffold(
+      backgroundColor:const Color.fromARGB(241, 150, 117, 206),
+      // appBar: AppBar(title:const Text("2nd Page"), 
+      // centerTitle: true,
       // ),
-      backgroundColor:Color.fromARGB(255, 198, 223, 240),
-        body:Container(
-          width: 500,
-          height: 950,
-          child:Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-            const Text("Time Table Generator",
-              style: TextStyle(
-                fontSize: 35,
-                fontFamily: 'Abril_FatFace',
-                color: Color.fromARGB(248, 238, 237, 239),
-              ),
-            ),
-        
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 35.0,horizontal: 23),
-              margin:const EdgeInsets.symmetric(vertical: 0.0,horizontal: 8.0),
-              color:const Color.fromARGB(83, 19, 98, 151),
-              height: 100,
-              width: 375,
-              child: TextField(
-                style:const TextStyle(
-                  color: Colors.black,
-                ),
-                decoration: InputDecoration(
-                  hintText: " Username or gmail address",
-                  hintStyle:const TextStyle(
-                    color: Color.fromARGB(171, 0, 0, 0),
-                    fontStyle: FontStyle.italic, 
+      body:  SafeArea(
+        child: SingleChildScrollView(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(10,30,10,0),
+              child: Column(
+                children:[
+                 const SizedBox(height: 45),
+                 const Icon(
+                    Icons.calendar_today,
+                    size:85,
                   ),
-                  filled: true,
-                  fillColor:const Color.fromARGB(255, 251, 251, 251),
-                  focusedBorder: border,
-                ),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 20.0,horizontal: 20),
-              margin:const EdgeInsets.symmetric(vertical: 0.0,horizontal: 8.0),
-              color:const Color.fromARGB(83, 19, 98, 151),
-              height: 90,
-              width: 375,
-              child: const TextField(
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: " Password",
-                  hintStyle: TextStyle(
-                    color: Color.fromARGB(171, 0, 0, 0),
-                    fontStyle: FontStyle.italic,
+                  const SizedBox(height:40),
+                  const Text(
+                    "STUDENT LOG IN",
+                    style: TextStyle(
+                      fontFamily:'PS',
+                      fontSize: 30,
+                      color: Color.fromARGB(255, 22, 22, 22)
+                    ),
                   ),
-                  filled: true,
-                  fillColor:  Color.fromARGB(255, 251, 251, 251),
-                ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 40, 10, 20),
+                    child: Container(
+                      width: 250,
+                      height: 45,
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                        // ignore: deprecated_member_use
+                        elevation: MaterialStateProperty.all(20),
+                         // ignore: deprecated_member_use
+                        backgroundColor:  MaterialStateProperty.all(
+                         Color.fromARGB(227, 49, 7, 65),
+                          ),
+                        ), 
+                        child:const Text("Log in as a Teacher",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: "PS",
+                          fontSize: 18,                  
+                        ),),
+                         onPressed: (){
+                          Navigator.pop(context);
+                            Navigator.pushNamed(context, '/home1');
+                         },
+                        ),
+                     ),
+                  ),  
+                 Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: TextField(    
+                      onChanged: (value1){
 
+                      },               
+                      controller: usernameController,
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        hintText: "Username",
+                        enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Color.fromARGB(255, 180, 177, 177)),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        fillColor: Colors.white,
+                        filled: true,
+                        errorText: "Enter proper info", // Example error message
+                        hintStyle: const TextStyle(
+                          color: Color.fromARGB(234, 206, 203, 203),
+                        ),
+                      ),
+                    ),
+                  ),
+                                    const SizedBox(height: 15),
+                  // Password Text Field
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: TextField(
+                      onChanged: (value){
+                        "http://10.0.2.2:5000/user="+usernameController.text+"pass="+passwordController.text.toString();
+                      },
+                      controller: passwordController,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        hintText: "Password",
+                        enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Color.fromARGB(255, 180, 177, 177)),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(0 ),
+                        ),
+                        fillColor: Colors.white,
+                        filled: true,
+                        errorText: "", // Example error message
+                        hintStyle: const TextStyle(
+                          color: Color.fromARGB(234, 206, 203, 203),
+                        ),
+                      ),
+                    ),
+                  ),
+     
+               
+               const Padding(padding: EdgeInsets.all(10.0),
+                 child:  Row(
+                   mainAxisAlignment: MainAxisAlignment.center,
+                   children: [
+                      Text("Forgot Password ?",
+                     style: TextStyle(color: Color.fromARGB(234, 29, 28, 28)),
+                     ),
+                   ],
+                 ),
+               ),
+                 const SizedBox(height: 15),
+                 Container(
+                    width: 300,
+                    height: 60,
+                    child: ElevatedButton(
+                      
+                      style: ButtonStyle(
+                      // ignore: deprecated_member_use
+                      elevation: MaterialStateProperty.all(20),
+                       // ignore: deprecated_member_use
+                      backgroundColor:  MaterialStateProperty.all(
+                       Color.fromARGB(226, 46, 14, 57),
+                        ),
+                      ), 
+                      child:const Text("Sign In",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: "PS",
+                        fontSize: 18,                  
+                      ),),
+                       onPressed: ()async{
+                          data = await jsonDecode(fetcdata(url));
+                          setState(() {
+                            if(output=="true"){
+                              Navigator.pushNamed(context, '/mainpage');
+                            }
+                            else{
+                              output = "Invalid ";
+                            }
+                            
+                          });
+                       },
+                      ),
+                   ),        
+                ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical:20,horizontal: 0),
-              child: ElevatedButton(onPressed: () {
-                  if(kDebugMode){
-                    print('button clicked');
-                  }
-                  Navigator.pushNamed(context, '/mainpage');
-              },
-              style:TextButton.styleFrom(
-                
-                elevation:(15),
-                backgroundColor:const Color.fromARGB(197, 19, 98, 151),
-                foregroundColor:const Color.fromARGB(255, 255, 255, 255),
-                fixedSize: const Size(375,55),
-                shape:ContinuousRectangleBorder(borderRadius: BorderRadius.circular(25)),              
-              ),
-              child:const Text("Log in",
-              style: TextStyle(
-                fontFamily: 'Abril_Fatface',
-                fontSize: 15,
-                fontStyle: FontStyle.italic,
-              ),
-              ),
-              
-              ),
-            ),
-
-          
-          ],
+          ),
         ),
-      ), 
+      ),
     );
   }
 }

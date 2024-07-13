@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget{
         '/mainpage' : (context) => const  Mainpage(), 
         '/table':(context) => const TTable(),
         '/login1': (context) => const Loginpage(),
-        '/display': (context) =>  Mongodb(),
+        '/display': (context) => const  Mongodb(),
         }
     );
   }

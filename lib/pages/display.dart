@@ -3,7 +3,7 @@ import 'package:samplef/MongoDbModel.dart';
 import 'package:samplef/pages/mongodb.dart';
 
 class Mongodb extends StatefulWidget{
-  const Mongodb ({super.key});
+  const Mongodb ({Key? key}): super(key:key);
 
   @override
   _MongodbState createState() => _MongodbState(); 
@@ -56,11 +56,11 @@ class _MongodbState extends State<Mongodb>{
           child: Column(
           children: [
             Text("${data.id}"),
-            SizedBox(height: 5,),
+           const SizedBox(height: 5,),
             Text("${data.day}"),
-            SizedBox(height: 5,),
+           const SizedBox(height: 5,),
             Text("${data.the900945}"),
-            SizedBox(height: 5,),
+           const SizedBox(height: 5,),
             Text("${data.name}"),
           ],
                 ),
